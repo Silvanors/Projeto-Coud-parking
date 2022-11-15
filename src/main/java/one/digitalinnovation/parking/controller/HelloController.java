@@ -11,6 +11,6 @@ public class HelloController {
 
     @GetMapping
     public String hello(){
-        return "Hello DIO. JAVA DEV";
+        return "Hello DIO. JAVA DEV...";
     }
 }
