@@ -18,7 +18,7 @@ class ParkingControllerTestIT extends AbstractContainerBase {
 
     @BeforeEach
     public void setUpTest(){
-        System.out.println(randomPort);
+        //System.out.println(randomPort);
         RestAssured.port = randomPort;
 
 
@@ -27,6 +27,8 @@ class ParkingControllerTestIT extends AbstractContainerBase {
     @Test
     void whenFindAllThenCheckResult() {
         RestAssured.given()
+                .auth()
+                .basic("user", "Dio@123456")
                 .when()
                 .get("/parking")
                 .then()
@@ -48,6 +50,7 @@ class ParkingControllerTestIT extends AbstractContainerBase {
 
         RestAssured.given()
                 .when()
+                .auth().basic("user", "Dio@123456")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(createDTO)
                 .post("/parking")
